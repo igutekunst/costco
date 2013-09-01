@@ -28,17 +28,23 @@ if (Meteor.isClient) {
       Session.set("selected_product", this._id);
     }
   });
+
+  Template.product.unitPrice = function() {
+   return this.price / this.size
+  };
 }
 
 // On server startup, create some products if the database is empty.
 if (Meteor.isServer) {
   Meteor.startup(function () {
     if (Products.find().count() === 0) {
-      var names = ["Diet Coke",
-                   "Root Beer",
-                   "Cheese"];
-      for (var i = 0; i < names.length; i++)
-        Products.insert({name: names[i], price: Math.floor(Random.fraction()*10)*5});
+      var prods = [{name: "Template",   itemNumber :-1, price :-1,    size : 0,  unit : "can"},
+                   {name : "Diet Coke", itemNumber : 0, price : 9.59, size : 32, unit : "can"},
+                   {name : "Root Beer", itemNumber : 1, price : 9.59, size : 32, unit : "can"},
+                   {name : "Cheese"   , itemNumber : 2, price : 0,    size : 1,  unit : "wedge"}
+                  ];
+      for (var i = 0; i < prods.length; i++)
+        Products.insert(prods[i]);
     }
   });
 }
