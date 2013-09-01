@@ -1,0 +1,36 @@
+<head>
+  <title>Leaderboard</title>
+</head>
+
+<body>
+  <div id="outer">
+    {{> products}}
+  </div>
+</body>
+
+<template name="products">
+  <div class="products">
+    {{#each products}}
+      {{> product}}
+    {{/each}}
+  </div>
+
+  {{#if selected_product}}
+  <div class="details">
+    <div class="name">{{selected_product}}</div>
+    <input type="button" class="inc" value="Give 5 points" />
+  </div>
+  {{/if}}
+
+  {{#unless selected_name}}
+  <div class="none">Click a product to select</div>
+  {{/unless}}
+</template>
+
+<template name="product">
+  <div class="product {{selected}}">
+    <span class="name">{{name}}</span>
+    <label> Price</label> <span class="price">{{price}}</span>
+  </div>
+</template>
+

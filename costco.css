@@ -15,18 +15,18 @@ body {
     margin: 0 auto;    
 }
 
-.player {
+.product {
     cursor: pointer;
     padding: 5px;
 }
 
-.player .name {
+.product .name {
     display: inline-block;
     width: 300px;
     font-size: 1.75em;
 }
 
-.player .score {
+.product .price {
     display: inline-block;
     width: 100px;
     text-align: right;
@@ -35,11 +35,11 @@ body {
     color: #777;
 }
 
-.player.selected {
+.product.selected {
     background-color: yellow;
 }
 
-.player.selected .score {
+.product.selected .price {
     color: black;
 }
 
