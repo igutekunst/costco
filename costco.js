@@ -8,7 +8,7 @@ if (Meteor.isClient) {
     return Products.find({}, {sort: {price: -1, name: 1}});
   };
 
-  Template.products.selected_name = function () {
+  Template.products.selected_product = function () {
     var product = Products.findOne(Session.get("selected_product"));
     return product && product.name;
   };
