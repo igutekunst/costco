@@ -12,41 +12,6 @@
 <body>
 </body>
 
-<template name="products">
-  <table class="products table table-striped">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Unit Price </th>
-        </tr>
-    </thead>
-    {{#each products}}
-      {{> product}}
-    {{/each}}
-  </table>
-
-  {{#if selected_product}}
-  <div class="alert alert-info">
-      <b>Selected Item</b>
-    <div class="name">{{selected_product}}</div>
-    </br>
-    <input type="button" class="btn btn-default inc" value="Give 5 points" />
-  </div>
-  {{/if}}
-
-  {{#unless selected_product}}
-  <div class="none">Click a product to select</div>
-  {{/unless}}
-</template>
-
-<template name="product">
-  <tr class="product {{selected}}">
-    <td class="name">{{name}}</td>
-    <td class="price">${{price}}</td>
-    <td class="pricePerUnit">${{unitPrice}} / {{unit}}</td>
-  </tr>
-</template>
 
 <template name="about">
 
@@ -55,29 +20,3 @@
 
 </template>
 
-<template name="navigation">
-
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Costco Family</a>
-        </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            {{#each items}}
-                {{>nav_item}}
-            {{/each}}
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
-</template>
-
-<template name="nav_item">
-<li class="{{active}}" id="{{name}}"><a href="{{link}}">{{name}}</a></li>
-</template>

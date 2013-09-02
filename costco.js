@@ -51,7 +51,7 @@ if (Meteor.isClient) {
      nav_items.map(function (item) {
         items[item.link] = item.link.slice(1);
     })
-    //Meteor.Router.add(items)
+    Meteor.Router.add(items)
 }
 
 

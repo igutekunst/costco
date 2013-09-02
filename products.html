@@ -1,0 +1,36 @@
+
+<template name="products">
+  <table class="products table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Unit Price </th>
+        </tr>
+    </thead>
+    {{#each products}}
+      {{> product}}
+    {{/each}}
+  </table>
+
+  {{#if selected_product}}
+  <div class="alert alert-info">
+      <b>Selected Item</b>
+    <div class="name">{{selected_product}}</div>
+    </br>
+    <input type="button" class="btn btn-default inc" value="Give 5 points" />
+  </div>
+  {{/if}}
+
+  {{#unless selected_product}}
+  <div class="none">Click a product to select</div>
+  {{/unless}}
+</template>
+
+<template name="product">
+  <tr class="product {{selected}}">
+    <td class="name">{{name}}</td>
+    <td class="price">${{price}}</td>
+    <td class="pricePerUnit">${{unitPrice}} / {{unit}}</td>
+  </tr>
+</template>
