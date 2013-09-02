@@ -1,42 +1,11 @@
   <body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Costco Family</a>
-        </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#home"  data-toggle="tab" >Home</a></li>
-            <li><a href="#shopping_lists"       data-toggle="tab">Shopping List</a></li>
-            <li><a href="#products"             data-toggle="tab">Products</a></li>
-            <li><a href="#about"                data-toggle="tab">About</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
+    {{>navigation}}
 
     <div class="container">
 
-
-      <div class="tab-content">
-        <div class="tab-pane active" id="home">
-          <div class="starter-template">
-            <h1>Welcome to the 4e Costco Bros</h1>
-            <p class="lead">Use this site to manage your shopping list.<br>.Food is delivered on Sunday around 5PM.</p>
-          </div>
-        </div>
-        <div class="tab-pane" id="products">
-          <div id="outer">
-            {{> products}}
-          </div>
-        </div>
-</div>
+          {{#isolate}} {{renderPage}} {{/isolate}}
+    </div>
 
   </body>
 
@@ -79,3 +48,36 @@
   </tr>
 </template>
 
+<template name="about">
+
+    <h1>Welcome to the 4e Costco Bros</h1>
+    <p class="lead">Use this site to manage your shopping list.<br>Food is delivered on Sunday around 5PM.</p>
+
+</template>
+
+<template name="navigation">
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Costco Family</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            {{#each items}}
+                {{>nav_item}}
+            {{/each}}
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+</template>
+
+<template name="nav_item">
+<li class="{{active}}" id="{{name}}"><a href="{{link}}">{{name}}</a></li>
+</template>
