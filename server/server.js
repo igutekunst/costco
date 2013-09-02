@@ -1,6 +1,7 @@
 // On server startup, create some products if the database is empty.
 if (Meteor.isServer) {
-  Meteor.startup(function () {
+
+    Meteor.startup(function () {
     if (Products.find().count() === 0) {
       var prods = [{name: "Brocoli",   itemNumber :  4, price : 1,    size : 1,  unit : "can"},
                    {name : "Diet Coke", itemNumber : 0, price : 9.59, size : 32, unit : "can"},
@@ -12,4 +13,8 @@ if (Meteor.isServer) {
     }
 
   });
+
+  Meteor.publish("products", function() {
+    return Products.find({})
+  })
 }

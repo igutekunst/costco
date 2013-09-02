@@ -1,7 +1,6 @@
 // Set up a collection to contain product information. On the server,
 // it is backed by a MongoDB collection named "products".
 
-Products = new Meteor.Collection("products");
 
 nav_items = [{name: 'Home', link: '/home'}, 
                 {name: 'Shopping List', link:'/shopping_list'},
@@ -9,6 +8,7 @@ nav_items = [{name: 'Home', link: '/home'},
                 {name: 'About', link:'/about'},
                 ] 
 if (Meteor.isClient) {
+    Meteor.subscribe("products");
     Template.navigation.items = function () {
 
         return nav_items;
