@@ -11,3 +11,4 @@ router
 accounts-base
 accounts-password
 accounts-ui
+stripe

@@ -23,7 +23,7 @@ if (Meteor.isClient) {
         items[item.link] = item.link.slice(1);
     })
     Meteor.Router.add(items)
-    console.log(Meteor.user())
+    console.log(Meteor.user());
 }
 
 
