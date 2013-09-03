@@ -13,8 +13,20 @@ if (Meteor.isServer) {
     }
 
   });
+    Accounts.onCreateUser( function (options, user) {
+        if(options.profile) {
+            user.profile = options.profile; 
+        }
+        user.cart = [];
+        user.troll = "asdfasdfasdf";
+        return user;
+    });
 
   Meteor.publish("products", function() {
     return Products.find({})
   })
+
+  Meteor.publish("userData", function() {
+    return Meteor.users.find({_id: this.userId}) 
+  });
 }
