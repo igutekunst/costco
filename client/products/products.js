@@ -15,15 +15,19 @@
   Template.products.events({
     'click input.inc': function () {
       Products.update(Session.get("selected_product"), {$inc: {price: 5}});
-    }
+    },
   });
 
   Template.product.events({
     'click': function () {
       Session.set("selected_product", this._id);
+    },
+    'click input.sub' : function (event, template) {
+        Meteor.call('add_to_cart', template.data)
     }
   });
 
   Template.product.unitPrice = function() {
    return this.price / this.size
   };
+ 

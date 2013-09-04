@@ -6,6 +6,8 @@
             <th>Name</th>
             <th>Price</th>
             <th>Unit Price </th>
+            <th>Add to Cart</th>
+            <th>Subscribe</th>
         </tr>
     </thead>
     {{#each products}}
@@ -32,5 +34,11 @@
     <td class="name">{{name}}</td>
     <td class="price">${{price}}</td>
     <td class="pricePerUnit">${{unitPrice}} / {{unit}}</td>
+    <td class="">
+        <input type="button" class="cart btn btn-default btn-sm" value="Add to Cart"></input>
+    </td>
+    <td class="">
+        <input type="button" class="sub btn btn-default btn-sm" value="Subscribe"></input>
+    </td>
   </tr>
 </template>

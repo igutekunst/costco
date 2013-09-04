@@ -14,8 +14,8 @@ if (Meteor.isServer) {
 
   });
     Accounts.onCreateUser(function(options, user) {
-      var d6 = function () { return Math.floor(Random.fraction() * 6) + 1; };
-      user.dexterity = d6() + d6() + d6();
+     user.cart = [];
+     user.history = [];
       // We still want the default hook's 'profile' behavior.
       if (options.profile)
         user.profile = options.profile;
@@ -29,4 +29,11 @@ if (Meteor.isServer) {
   Meteor.publish("userData", function() {
     return Meteor.users.find({_id: this.userId}) 
   });
+
+  Meteor.methods({
+      add_to_cart : function(item)  {
+          console.log("Updaing users");
+          Meteor.users.update( {_id : Meteor.user()._id},  {$push : {'cart' : item } }  );
+      }
+  })
 }
