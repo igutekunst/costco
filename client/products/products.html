@@ -15,28 +15,8 @@
     {{/each}}
   </table>
   <!-- Button trigger modal -->
-  <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg">Launch demo modal</a>
-
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title">Modal title</h4>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
   {{#if alert}}
-  <div class="alert alert-info" id="alerts">
+  <div class="alert alert-warning" id="alerts">
       <b>{{alert.reason}}</b>
       </br>
       <p> {{alert.details}} </p>
@@ -50,7 +30,12 @@
     <td class="price">${{price}}</td>
     <td class="pricePerUnit">${{unitPrice}} / {{unit}}</td>
     <td class="">
+        {{#if in_cart}}
+        <input type="button" class="remove btn btn-default btn-sm" value="Remove"></input>
+        {{/if}}
+        {{#unless in_cart}}
         <input type="button" class="cart btn btn-default btn-sm" value="Add to Cart"></input>
+        {{/unless}}
     </td>
     <td class="">
         <input type="button" class="sub btn btn-default btn-sm" value="Subscribe"></input>

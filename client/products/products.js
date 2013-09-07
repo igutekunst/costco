@@ -8,6 +8,12 @@
     return Session.get("alert") ? Session.get("alert") : false;
   };
 
+  Template.product.in_cart = function () {
+      console.log(this);
+      var count = Meteor.users.find({_id : Meteor.user()._id, 
+                                        cart : this}).count()
+     return count > 0;
+  }
 
 
   Template.product.events({
@@ -22,7 +28,11 @@
                 Session.set("alert", false) ;
              }
          } );
+    },
+    'click input.remove' : function (event, template) {
+        Meteor.call("remove_from_cart", template.data._id);
     }
+
   });
 
   Template.product.unitPrice = function() {
