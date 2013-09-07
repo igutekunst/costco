@@ -32,8 +32,19 @@ if (Meteor.isServer) {
 
   Meteor.methods({
       add_to_cart : function(item)  {
-          console.log("Updaing users");
-          Meteor.users.update( {_id : Meteor.user()._id},  {$push : {'cart' : item } }  );
+      var count = Meteor.users.find({_id : Meteor.user()._id, 
+                                        cart : item}).count()
+        
+        if (count == 0) {
+            Meteor.users.update( {_id     : Meteor.user()._id},  
+                                {$push   : {'cart' : item } }  );
+            return true;
+        }
+            return new Meteor.Error(409, "Item already in cart", "Costco carts only support one item per type in cart. Too add more, change the amount/qunatity desired.");
+        },
+      remove_from_cart : function(id) {
+        Meteor.users.update ({_id : Meteor.user()._id}, {$pull : {cart : { _id : id}}}) ;
       }
   })
+
 }

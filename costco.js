@@ -24,6 +24,9 @@ if (Meteor.isClient) {
     })
     Meteor.Router.add(items)
     console.log(Meteor.user());
+    Meteor.startup(function () {
+        Session.set("alert", false)  ;
+    })
 }
 
 

@@ -6,9 +6,10 @@
 standard-app-packages
 preserve-inputs
 random
-jquery
 router
 accounts-base
 accounts-password
 accounts-ui
 stripe
+bootstrap-3
+jquery

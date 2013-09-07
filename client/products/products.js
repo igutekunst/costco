@@ -3,27 +3,25 @@
     return Products.find({}, {sort: {price: 1, name: 1}});
   };
 
-  Template.products.selected_product = function () {
-    var product = Products.findOne(Session.get("selected_product"));
-    return product && product.name;
+  Template.products.alert = function () {
+      
+    return Session.get("alert") ? Session.get("alert") : false;
   };
 
-  Template.product.selected = function () {
-    return Session.equals("selected_product", this._id) ? "selected" : '';
-  };
 
-  Template.products.events({
-    'click input.inc': function () {
-      Products.update(Session.get("selected_product"), {$inc: {price: 5}});
-    },
-  });
 
   Template.product.events({
     'click': function () {
       Session.set("selected_product", this._id);
     },
-    'click input.sub' : function (event, template) {
-        Meteor.call('add_to_cart', template.data)
+    'click input.cart' : function (event, template) {
+         Meteor.call('add_to_cart', template.data, function (ret, error) {
+             if (error !== true) {
+                 Session.set("alert", error);
+             } else {
+                Session.set("alert", false) ;
+             }
+         } );
     }
   });
 

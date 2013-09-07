@@ -14,19 +14,34 @@
       {{> product}}
     {{/each}}
   </table>
+  <!-- Button trigger modal -->
+  <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg">Launch demo modal</a>
 
-  {{#if selected_product}}
-  <div class="alert alert-info">
-      <b>Selected Item</b>
-    <div class="name">{{selected_product}}</div>
-    </br>
-    <input type="button" class="btn btn-default inc" value="Give 5 points" />
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Modal title</h4>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+  {{#if alert}}
+  <div class="alert alert-info" id="alerts">
+      <b>{{alert.reason}}</b>
+      </br>
+      <p> {{alert.details}} </p>
   </div>
   {{/if}}
-
-  {{#unless selected_product}}
-  <div class="none">Click a product to select</div>
-  {{/unless}}
 </template>
 
 <template name="product">
@@ -41,4 +56,9 @@
         <input type="button" class="sub btn btn-default btn-sm" value="Subscribe"></input>
     </td>
   </tr>
+</template>
+
+<template name="add_to_cart">
+    <!-- Button to trigger modal -->
+     
 </template>
