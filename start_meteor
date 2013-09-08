@@ -1,0 +1,6 @@
+#!/bin/bash
+cd /home/igutek/Dropbox/Projects/costco
+export HOME=/home/igutek/
+/usr/bin/env meteor &
+wait
+

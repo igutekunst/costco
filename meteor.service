@@ -1,0 +1,10 @@
+[Unit]
+Description=Meteor Service
+
+[Service]
+Type=simple
+PIDFile=/var/run/meteor.pid
+ExecStart=/usr/bin/bash /usr/local/bin/start_meteor
+
+[Install]
+WantedBy=multi-user.target
