@@ -6,8 +6,8 @@
             <th>Name</th>
             <th>Price</th>
             <th>Unit Price </th>
-            <th>Add to Cart</th>
-            <th>Subscribe</th>
+            <th>Amount</th>
+            <th>Remove</th>
         </tr>
     </thead>
     {{#each products}}
@@ -23,10 +23,10 @@
     <td class="price">${{price}}</td>
     <td class="pricePerUnit">${{unitPrice}} / {{unit}}</td>
     <td class="">
-        <input type="button" class="remove btn btn-default btn-sm" value="Remove"></input>
+        {{in_cart}} {{unit}} in cart
     </td>
     <td class="">
-        <input type="button" class="change btn btn-default btn-sm" value="Change"></input>
+        <input type="button" class="remove btn btn-default btn-sm" value="Remove"></input>
     </td>
   </tr>
 </template>

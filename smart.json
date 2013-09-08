@@ -1,6 +1,8 @@
 {
   "packages": {
     "router": {},
-    "stripe": {}
+    "stripe": {},
+    "bootstrap-3": {},
+    "require": {}
   }
 }

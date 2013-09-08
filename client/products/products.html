@@ -6,8 +6,10 @@
             <th>Name</th>
             <th>Price</th>
             <th>Unit Price </th>
+            {{#if currentUser}}
+            <th>Amount Desired </th>
             <th>Add to Cart</th>
-            <th>Subscribe</th>
+            {{/if}}
         </tr>
     </thead>
     {{#each products}}
@@ -29,17 +31,28 @@
     <td class="name">{{name}}</td>
     <td class="price">${{price}}</td>
     <td class="pricePerUnit">${{unitPrice}} / {{unit}}</td>
+    {{#if currentUser}}
     <td class="">
+            
         {{#if in_cart}}
-        <input type="button" class="remove btn btn-default btn-sm" value="Remove"></input>
+            
+        {{in_cart_human}}
         {{/if}}
         {{#unless in_cart}}
-        <input type="button" class="cart btn btn-default btn-sm" value="Add to Cart"></input>
+        <div class="col-sm-5">
+            <input type="text" class="amount input-mini form-control"  placeholder="amount" value="1" id="amount_{{_id}}">
+        </div>
         {{/unless}}
     </td>
     <td class="">
-        <input type="button" class="sub btn btn-default btn-sm" value="Subscribe"></input>
+        {{#if in_cart}}
+            <input type="button" class="remove btn btn-default btn-sm" value="Remove"></input>
+        {{/if}}
+        {{#unless in_cart}}
+            <input type="button" class="cart btn btn-default btn-sm" value="Add to Cart"></input>
+        {{/unless}}
     </td>
+    {{/if}}
   </tr>
 </template>
 
