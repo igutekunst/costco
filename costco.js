@@ -1,5 +1,3 @@
-
-
 nav_items = [{name: 'Home', link: '/home'}, 
                 {name: 'Shopping List', link:'/shopping_list'},
                 {name: 'Products', link:'/products'},

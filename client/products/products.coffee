@@ -1,23 +1,30 @@
+#Meteor.subscribe "group_cart"
+Asdf = new Meteor.Collection "group_cart"
+Products = new Meteor.Collection "products"
+
 Template.products.products = ->
   Products.find {},
     sort:
       price: 1
       name: 1
 
+Template.products.list = ->
+    Asdf.find {}
+        
 
 Template.products.alert = ->
   (if Session.get("alert") then Session.get("alert") else false)
 
 Template.product.in_cart = ->
   if Meteor.user()
-    cart = Meteor.user().cart
-    id = @_id
-    items = _.filter cart, (item) ->
-        item._id is id
-    if items.length > 0
-        items[0].amount
-    else
-        0
+        cart =Carts.findOne userId: Meteor.user()._id
+        id = @_id
+        items = _.filter cart.items, (item) ->
+            item._id is id
+        if items.length > 0
+            items[0].amount
+        else
+            0
 
 
 Template.product.dirty = (a) ->
@@ -42,3 +49,4 @@ Template.product.events
 
 Template.product.unitPrice = ->
   @price / @size
+
